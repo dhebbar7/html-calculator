@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <title>HTML CSS CALC</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #222222;
+      }
+      .main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: auto;
+        transform: translate(-50%, -50%);
+      }
+      .view {
+        font-family: "Orbitron", sans-serif;
+        margin: 2;
+        padding: 3;
+        background-color: #222222;
+        border: 1px solid white;
+        color: white;
+        height: 40;
+        width: 228;
+        font-size: 20;
+      }
+      .button {
+        font-family: "Orbitron", sans-serif;
+        background-color: black;
+        color: white;
+        width: 50;
+        height: 50;
+        border: none;
+        margin: 2;
+        font-size: 18;
+      }
+      .button-0 {
+        font-family: "Orbitron", sans-serif;
+        width: 108;
+        background-color: black;
+        color: white;
+        font-size: 20;
+        height: 50;
+        margin: 2;
+        border: none;
+      }
+      .button-eq {
+        font-family: "Orbitron", sans-serif;
+        background-color: black;
+        color: white;
+        width: 50;
+        height: 108;
+        margin: 2;
+        font-size: 20;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <form name="form">
+        <input class="view" name="view" />
+      </form>
+      <table>
+        <tr>
+          <td>
+            <input class="button" onclick="clean()" type="button" value="CE" />
+          </td>
+          <td>
+            <input class="button" onclick="back()" type="button" value="C" />
+          </td>
+          <td>
+            <input class="button" onclick="show('/')" type="button" value="/" />
+          </td>
+          <td>
+            <input class="button" onclick="show('+')" type="button" value="+" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input class="button" onclick="show(7)" type="button" value="7" />
+          </td>
+          <td>
+            <input class="button" onclick="show(8)" type="button" value="8" />
+          </td>
+          <td>
+            <input class="button" onclick="show(9)" type="button" value="9" />
+          </td>
+          <td>
+            <input class="button" onclick="show('*')" type="button" value="*" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input class="button" onclick="show(4)" type="button" value="4" />
+          </td>
+          <td>
+            <input class="button" onclick="show(5)" type="button" value="5" />
+          </td>
+          <td>
+            <input class="button" onclick="show(6)" type="button" value="6" />
+          </td>
+          <td>
+            <input class="button" onclick="show('-')" type="button" value="-" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input class="button" onclick="show(1)" type="button" value="1" />
+          </td>
+          <td>
+            <input class="button" onclick="show(2)" type="button" value="2" />
+          </td>
+          <td>
+            <input class="button" onclick="show(3)" type="button" value="3" />
+          </td>
+          <td rowspan="2">
+            <input
+              class="button-eq"
+              onclick="calculate()"
+              type="button"
+              value="="
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input class="button-0" onclick="show(0)" type="button" value="0" />
+          </td>
+          <td>
+            <input class="button" onclick="show('.')" type="button" value="." />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      const show = entered => {
+        document.form.view.value = document.form.view.value + entered;
+      };
+      const calculate = () => {
+        const exp = document.form.view.value;
+        if (exp) {
+          document.form.view.value = eval(exp);
+        }
+      };
+      const back = () => {
+        const val = document.form.view.value;
+        document.form.view.value = val.substring(0, val.length - 1);
+      };
+      const clean = () => {
+        document.form.view.value = "";
+      };
+    </script>
+  </body>
+</html>
